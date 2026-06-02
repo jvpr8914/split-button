@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split Button</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="./split-button.css" />
+  <script src="./split-button.js" defer></script>
+</head>
+
+<body>
+
+  <div class="split-btn primary">
+    <button class="split-btn__main" onclick="notify('Saved!')">
+      <i class="ti ti-device-floppy" aria-hidden="true"></i> Save
+    </button>
+    <div class="split-btn__divider"></div>
+    <button class="split-btn__arrow" aria-label="More save options" onclick="toggleDrop('drop1', this)">
+      <i class="ti ti-chevron-down"></i>
+    </button>
+    <div class="dropdown" id="drop1">
+      <button class="dropdown__item" onclick="notify('Saved as draft'); closeDrop('drop1')">
+        <i class="ti ti-file-text" aria-hidden="true"></i> Save as draft
+      </button>
+      <button class="dropdown__item" onclick="notify('Saved & published'); closeDrop('drop1')">
+        <i class="ti ti-world-upload" aria-hidden="true"></i> Save & publish
+      </button>
+      <div class="dropdown__sep"></div>
+      <button class="dropdown__item" onclick="notify('Saved as template'); closeDrop('drop1')">
+        <i class="ti ti-template" aria-hidden="true"></i> Save as template
+      </button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    min-height: 100vh;
+}
+
+/* ── Split Button Shell ── */
+.split-btn {
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: 8px;
+    overflow: visible;
+    position: relative;
+}
+
+/* Main action button */
+.split-btn__main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px 0 0 8px;
+    transition: filter 0.15s;
+    white-space: nowrap;
+}
+
+.split-btn__main:hover {
+    filter: brightness(0.9);
+}
+
+.split-btn__main:active {
+    transform: scale(0.98);
+}
+
+/* Thin vertical rule between the two halves */
+.split-btn__divider {
+    width: 1px;
+    opacity: 0.3;
+    align-self: stretch;
+}
+
+/* Chevron / dropdown toggle */
+.split-btn__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    cursor: pointer;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    transition: filter 0.15s;
+    position: relative;
+}
+
+.split-btn__arrow:hover {
+    filter: brightness(0.9);
+}
+
+.split-btn__arrow:active {
+    transform: scale(0.98);
+}
+
+.split-btn__arrow i {
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.split-btn__arrow.open i {
+    transform: rotate(180deg);
+}
+
+/* ── Dropdown ── */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 180px;
+    background: #fff;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 4px;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown.open {
+    display: block;
+}
+
+.dropdown__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #111;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    transition: background 0.1s;
+}
+
+.dropdown__item:hover {
+    background: #f0f0f0;
+}
+
+.dropdown__item i {
+    font-size: 15px;
+    color: #666;
+}
+
+.dropdown__sep {
+    height: 0.5px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 4px 0;
+}
+
+/* ── Variants ── */
+
+/* Primary (purple) */
+.primary .split-btn__main,
+.primary .split-btn__arrow {
+    background: #3C3489;
+    color: #fff;
+}
+
+.primary .split-btn__divider {
+    background: #fff;
+}
+
+/* ── Toast notification ── */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: #fff;
+    border: 0.5px solid rgba(0, 0, 0, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #555;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
